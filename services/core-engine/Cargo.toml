@@ -1,5 +1,5 @@
 [package]
-name = "3d-print-cloud-engine"
+name = "print-cloud-engine"
 version = "0.1.0"
 edition = "2021"
 license = "AGPL-3.0-or-later"
@@ -13,6 +13,14 @@ tower-http = { version = "0.6", features = ["cors", "trace"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 uuid = { version = "1", features = ["v4"] }
+alice-sdf = { path = "../../../ALICE-SDF", optional = true }
+alice-view = { path = "../../../ALICE-View", optional = true }
+alice-physics = { path = "../../../ALICE-Physics", optional = true }
+alice-print = { path = "../../../ALICE-Print", optional = true }
+
+[features]
+default = []
+alice-core = ["alice-sdf", "alice-view", "alice-physics", "alice-print"]
 
 [profile.release]
 opt-level = 3
